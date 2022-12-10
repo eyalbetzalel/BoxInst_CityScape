@@ -1,0 +1,25 @@
+_BASE_: "Base-BoxInst.yaml"
+MODEL:
+  RESNETS:
+    DEPTH: 50
+  BASIS_MODULE:
+    NUM_CLASSES: 8
+  FCOS:
+    NUM_CLASSES: 8
+  ROI_HEADS:
+    BATCH_SIZE_PER_IMAGE: 16
+  RPN:
+   BATCH_SIZE_PER_IMAGE: 16
+SOLVER:
+  STEPS: (60000,80000)
+  MAX_ITER: 90000
+DATASETS:
+  TRAIN: ("cityscapes_fine_instance_seg_train",)
+  TEST: ("cityscapes_fine_instance_seg_val",)
+INPUT:
+  MIN_SIZE_TRAIN: (800, 830, 864, 896, 928, 960, 992, 1024)
+  MIN_SIZE_TRAIN_SAMPLING: "choice"
+  MIN_SIZE_TEST: 1024
+  MAX_SIZE_TRAIN: 2048
+  MAX_SIZE_TEST: 2048
+
